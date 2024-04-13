@@ -1,0 +1,29 @@
+#company-details{
+	width: 300px;
+    padding: 50px 10px;
+    font-family: helvetica;
+
+	> .company-logo{
+		width: 80px;
+	}
+
+	> .company-name{
+		margin: 0;
+		font-size: 30px;
+	}
+
+	> .info-list{
+		padding: 0;
+		list-style: none;
+		
+		> .list-item{
+			display: flex;
+			justify-content: space-between;
+			padding: 5px 0px;
+
+			> .type{
+				color: gray;
+			}
+		}
+	}
+}
