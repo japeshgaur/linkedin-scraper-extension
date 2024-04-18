@@ -4,6 +4,7 @@ chrome.tabs.onUpdated.addListener(function(tabId, changeInfo, tab) {
 		target: { tabId: tabId },
 		files: ['content.js']
 	  });
+
+	  chrome.tabs.sendMessage(tabId, { action: 'openPopup' });
 	}
   });
-  

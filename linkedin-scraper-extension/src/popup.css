@@ -1,29 +1,89 @@
 #company-details{
-	width: 300px;
-    padding: 50px 10px;
-    font-family: helvetica;
-
-	> .company-logo{
-		width: 80px;
-	}
-
-	> .company-name{
-		margin: 0;
-		font-size: 30px;
-	}
-
-	> .info-list{
-		padding: 0;
-		list-style: none;
+	> .company-item{
+		width: 300px;
+		padding: 50px 10px;
+		font-family: helvetica;
 		
-		> .list-item{
-			display: flex;
-			justify-content: space-between;
-			padding: 5px 0px;
-
-			> .type{
-				color: gray;
+		> .company-logo{
+			width: 80px;
+		}
+		
+		> .company-name{
+			margin: 0;
+			font-size: 30px;
+		}
+		
+		> .info-list{
+			padding: 0;
+			list-style: none;
+			
+			> .list-item{
+				display: flex;
+				justify-content: space-between;
+				padding: 5px 0px;
+				align-items: baseline;
+				
+				> .type{
+					color: gray;
+				}
 			}
 		}
+	}
+	> .cancel-btn-container {
+		display: flex;
+	    justify-content: end;
+	}
+	> .company-list {
+		border: 1px solid #dfdbdb;
+		border-radius: 5px;
+		font-family: helvetica;
+		margin: 30px 5px;
+
+		> .table-header {
+			background-color: #f1eeee;
+			color: #797474;
+
+			> .table-heading {
+				padding: 10px;
+				border-bottom: 1px solid #dfdbdb;
+			}
+		}
+
+		> .table-row {
+
+			> .table-item {
+				padding: 10px;
+				border-bottom: 1px solid #dfdbdb;
+				text-align: center;
+			    vertical-align: middle;
+				color: #999494;
+				font-weight: 600;
+
+				> .company-logo{
+					width: 80px;
+				}
+			}
+
+			> .table-item.company-name {
+				font-weight: 700;
+				color: #9500ef;
+			}
+
+			> .table-item.company-website {
+				font-weight: 700;
+				color: #9500ef;
+				text-wrap: nowrap;
+
+				> .copy-icon {
+					display: none;
+				}
+					>.copy-icon:active {
+						outline: none;
+						box-shadow: 0 0 5px #9500ef;
+					}
+			}
+		}
+
+		
 	}
 }

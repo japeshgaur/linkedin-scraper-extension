@@ -43,43 +43,23 @@ function scrapeCompanyDetails() {
 	companyDetails.founded = foundedElement ? foundedElement.innerText : '-';
 
 	companyDetails.url = window.location.href;
-
-	var aboutDetails;
-
-	if(window.location.href.startsWith('https://www.linkedin.com/company/')) {
-		aboutDetails = fetchAboutPageData();
-	}
-
-	async function fetchAboutPageData() {
-		// Construct the URL of the "about" page
-		const aboutPageURL = window.location.href + 'about/';
-		try {
-			// Fetch the HTML content of the "about" page
-			const response = await fetch(aboutPageURL);
-			const html = await response.text();
-			// Create a temporary element to parse the HTML content
-			const tempElement = document.createElement('div');
-			tempElement.innerHTML = html;
-			// Extract data from the "about" page
-			const description = tempElement.querySelector('.about-section .description').textContent;
-			// Extract other information from the "about" page as needed
-			console.log('Description (About Page):', description);
-
-			return description;
-		} catch (error) {
-			console.error('Error fetching or parsing "about" page:', error);
-		}
-	}
-
   
 	return companyDetails;
   }
+
+  chrome.runtime.onMessage.addListener(function(message, sender, sendResponse) {
+    if (message.action === 'openPopup') {
+        // Trigger the opening of the extension popup
+        chrome.runtime.sendMessage({ action: 'openPopup' });
+    }
+});
+
   
   // Send scraped data to the backend
   function sendScrapedDataToBackend() {
 	const companyDetails = scrapeCompanyDetails();
   
-	fetch('http://localhost:3000/api/companies', {
+	fetch('http://localhost:3001/api/companies', {
 	  method: 'POST',
 	  headers: {
 		'Content-Type': 'application/json',
